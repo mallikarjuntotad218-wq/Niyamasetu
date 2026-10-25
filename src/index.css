@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Typography scale tokens in Tailwind v4:
+     - Page title: 32px with 40px line-height (1.25)
+     - Section heading: 22px with 30px line-height (1.36)
+     - Body text: 15px with 24px line-height (1.6) */
+  --text-page-title: 32px;
+  --text-page-title--line-height: 40px;
+  --text-page-title--letter-spacing: -0.025em;
+
+  --text-section-heading: 22px;
+  --text-section-heading--line-height: 30px;
+  --text-section-heading--letter-spacing: -0.015em;
+
+  --text-body-text: 15px;
+  --text-body-text--line-height: 24px;
+
+  --color-prism-mint: #DDF3D2;
+  --color-prism-aqua: #B6E6D9;
+  --color-prism-teal: #329F9C;
+  --color-prism-deepteal: #126A78;
+  --color-prism-midnight: #183B70;
+  --color-prism-lavender: #C8B0F0;
+}
+
+:root {
+  /* ==========================================================================
+     Typography System Tokens — Responsive Type Scale
+     Ensures accessible, proportional text sizing and line heights across all viewports.
+     - Page Titles: 32px (fluid clamp 26px to 32px; 32px / 40px line-height on desktop)
+     - Section Headings: 22px (fluid clamp 19px to 22px; 22px / 30px line-height on desktop)
+     - Body Text: 15px (fluid clamp 14px to 15px; 15px / 24px line-height on desktop)
+     ========================================================================== */
+  --font-size-page-title: clamp(1.625rem, 1.35rem + 1.2vw, 2rem); /* 26px to 32px */
+  --line-height-page-title: 1.25; /* 40px at 32px */
+
+  --font-size-section-heading: clamp(1.1875rem, 1.05rem + 0.6vw, 1.375rem); /* 19px to 22px */
+  --line-height-section-heading: 1.3636; /* 30px at 22px */
+
+  --font-size-body: clamp(0.875rem, 0.84rem + 0.15vw, 0.9375rem); /* 14px to 15px */
+  --line-height-body: 1.6; /* 24px at 15px (optimal WCAG 1.4.12 compliance) */
+
+  /* Palette Tokens — Light Theme (Premium Prism Day) */
+  --bg-main: #F5FAF7;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #EAF5F0;
+  --surface-hover: #E3F2EC;
+  --text-primary: #172C35;
+  --text-secondary: #5F7279;
+  --accent-primary: #238C88;
+  --accent-secondary: #6D66B5;
+  --border-color: #DCE9E5;
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size-page-title: 32px;
+    --line-height-page-title: 40px;
+
+    --font-size-section-heading: 22px;
+    --line-height-section-heading: 30px;
+
+    --font-size-body: 15px;
+    --line-height-body: 24px;
+  }
+}
+
+html.dark {
+  /* Palette Tokens — Dark Theme (Premium Prism Night) */
+  --bg-main: #0D1722;
+  --surface-primary: #142332;
+  --surface-secondary: #1B3040;
+  --surface-hover: #203A49;
+  --text-primary: #ECF5F5;
+  --text-secondary: #A6BBC3;
+  --accent-primary: #65D5C5;
+  --accent-secondary: #B9A5F5;
+  --border-color: #294251;
+  color-scheme: dark;
+}
+
+/* Typography Utility Classes */
+.page-title,
+.text-page-title {
+  font-size: var(--font-size-page-title, 32px);
+  line-height: var(--line-height-page-title, 40px);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.section-heading,
+.text-section-heading {
+  font-size: var(--font-size-section-heading, 22px);
+  line-height: var(--line-height-section-heading, 30px);
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+.body-text,
+.text-body-text {
+  font-size: var(--font-size-body, 15px);
+  line-height: var(--line-height-body, 24px);
+}
+
+/* Base Body Styling */
+body {
+  font-family: var(--font-body), var(--font-sans), sans-serif;
+  font-size: var(--font-size-body, 15px);
+  line-height: var(--line-height-body, 1.6);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(35, 140, 136, 0.2);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(101, 213, 197, 0.25);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(35, 140, 136, 0.45);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(101, 213, 197, 0.5);
+}
+
+/* Tabular figures */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

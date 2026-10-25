@@ -1,0 +1,6 @@
+{
+  "name": "Notice on the Desk",
+  "description": "Intelligent legal and government notice analysis platform for small-business owners. Extract deadlines, understand obligations, manage action checklists, and prepare draft responses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
